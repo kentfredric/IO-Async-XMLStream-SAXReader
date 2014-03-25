@@ -3,3 +3,8 @@ Release history for IO-Async-XMLStream-SAXReader
 {{$NEXT}}
  - First version.
 
+ [Dependencies::Aggregate]
+ - 5.010 : 27
+ - 5.012 : 24
+ - 5.019 : 12
+
