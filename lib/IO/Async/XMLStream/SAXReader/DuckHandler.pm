@@ -12,6 +12,15 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 use Scalar::Util qw(weaken);
 use Carp qw(croak);
 
+
+
+
+
+
+
+
+
+
 sub new {
   my ( $self, $opts ) = @_;
   croak('SAXReader option is mandatory') unless exists $opts->{SAXReader};
@@ -62,6 +71,9 @@ IO::Async::XMLStream::SAXReader::DuckHandler - Deferred Handler proxy for IO::As
 =head1 VERSION
 
 version 0.001000
+
+=for Pod::Coverage new
+can
 
 =head1 AUTHOR
 
