@@ -23,9 +23,13 @@ provides:
   IO::Async::XMLStream::SAXReader:
     file: lib/IO/Async/XMLStream/SAXReader.pm
     version: '0.001000'
+  IO::Async::XMLStream::SAXReader::DuckHandler:
+    file: lib/IO/Async/XMLStream/SAXReader/DuckHandler.pm
+    version: '0.001000'
 requires:
+  Carp: '0'
   IO::Async::Stream: '0'
-  IO::Async::XMLStream::SAXReader::DuckHandler: '0'
+  Scalar::Util: '0'
   XML::LibXML::SAX::ChunkParser: '0.00007'
   parent: '0'
   perl: '5.008'
@@ -38,11 +42,10 @@ resources:
   repository: https://github.com/kentfredric/IO-Async-XMLStream-SAXReader.git
 version: '0.001000'
 x_BuiltWith:
-  failures:
-    IO::Async::XMLStream::SAXReader::DuckHandler: 'module was not found in INC'
   modules:
     CPAN::Meta: '2.140640'
     CPAN::Meta::Requirements: '2.125'
+    Carp: '1.33'
     Dist::Zilla::Plugin::Authority: '1.006'
     Dist::Zilla::Plugin::AutoPrereqs: '5.014'
     Dist::Zilla::Plugin::ConfirmRelease: '5.014'
@@ -94,6 +97,7 @@ x_BuiltWith:
     List::Util: '1.38'
     Module::Build: '0.4205'
     Pod::Coverage::TrustPod: '0.100003'
+    Scalar::Util: '1.38'
     Test::CPAN::Changes: '0.27'
     Test::CPAN::Meta: '0.23'
     Test::Kwalitee: '1.18'
@@ -229,6 +233,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Test::Compile::PerFile:
           file:
             - lib/IO/Async/XMLStream/SAXReader.pm
+            - lib/IO/Async/XMLStream/SAXReader/DuckHandler.pm
           path_translator: base64_filter
           prefix: t/00-compile
           skip: []

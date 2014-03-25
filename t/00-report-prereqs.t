@@ -111,8 +111,9 @@ my $static_prereqs = do { my $x = {
                     },
        'runtime' => {
                       'requires' => {
+                                      'Carp' => '0',
                                       'IO::Async::Stream' => '0',
-                                      'IO::Async::XMLStream::SAXReader::DuckHandler' => '0',
+                                      'Scalar::Util' => '0',
                                       'XML::LibXML::SAX::ChunkParser' => '0.00007',
                                       'parent' => '0',
                                       'perl' => '5.008',

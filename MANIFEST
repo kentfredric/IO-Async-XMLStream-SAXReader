@@ -10,6 +10,7 @@ META.yml
 README
 dist.ini
 lib/IO/Async/XMLStream/SAXReader.pm
+lib/IO/Async/XMLStream/SAXReader/DuckHandler.pm
 maint-travis-ci/.gitrepo
 maint-travis-ci/.perltidyrc
 maint-travis-ci/README.mkdn
@@ -28,7 +29,10 @@ maint-travis-ci/travis_enable.pl
 maint-travis-ci/yamls/sterile.mkdn
 maint-travis-ci/yamls/sterile.yaml
 maint-travis-ci/yamls/sterile2.yaml
+maint/perlcritic.rc.gen.pl
+perlcritic.deps
 perlcritic.rc
+t/00-compile/lib_IO_Async_XMLStream_SAXReader_DuckHandler_pm.t
 t/00-compile/lib_IO_Async_XMLStream_SAXReader_pm.t
 t/00-report-prereqs.t
 t/01-piecewise-xml.t

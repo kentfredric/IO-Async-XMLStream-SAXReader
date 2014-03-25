@@ -37,6 +37,7 @@ my $seen_end;
     my $node = join q[/], @aelem_stack_name;
     $path_count{$node}++;
   }
+
   sub on_end_element {
     my ( $self, $args ) = @_;
     pop @aelem_stack_name;
@@ -46,9 +47,7 @@ my $seen_end;
 
 my $loop = IO::Async::Loop->new();
 
-my $stream = Test->new(
-  handle            => $fh,
-);
+my $stream = Test->new( handle => $fh, );
 $stream->{loop} = $loop;
 
 $loop->add($stream);
