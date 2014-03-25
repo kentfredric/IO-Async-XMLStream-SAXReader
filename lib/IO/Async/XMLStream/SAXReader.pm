@@ -44,9 +44,7 @@ All are prefixed with the C<on_> prefix as constructor arguments.
 
 =cut
 
-use XML::LibXML::SAX::ChunkParser;
-
-our $BUGGY_FINISH = !eval { XML::LibXML::SAX::ChunkParser->VERSION('0.0007'); 1 };
+use XML::LibXML::SAX::ChunkParser 0.00007;    # Buggy Finish
 
 sub _init {
   my ($self) = @_;
@@ -132,26 +130,13 @@ sub configure {
   return $self->SUPER::configure(%params);
 }
 
-sub _finish {
-  my ($self) = @_;
-  if ( !$BUGGY_FINISH ) {
-    return $self->_SAXReader->{Parser}->finish;
-  }
-  my $p  = $self->_SAXReader->{Parser};
-  my $lp = $p->{ParserOptions}->{LibParser};
-  $lp->set_handler($p);
-  $p->finish;
-  $lp->set_handler(undef);
-  return $self;
-}
-
 sub on_read {
   my ( $self, $buffref, $eof ) = @_;
   my $text = substr ${$buffref}, 0, length ${$buffref}, q[];
 
   $self->_SAXReader->{Parser}->parse_chunk($text) if length $text;
   if ($eof) {
-    $self->_finish;
+    $self->_SAXReader->{Parser}->finish;
     return 0;
   }
   return 1;
