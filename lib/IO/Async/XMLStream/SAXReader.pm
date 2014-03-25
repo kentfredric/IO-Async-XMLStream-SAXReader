@@ -7,7 +7,42 @@ package IO::Async::XMLStream::SAXReader;
 
 # ABSTRACT: Dispatch SAX events from an XML stream.
 
+# AUTHORITY
+
 use parent 'IO::Async::Stream';
+
+=head1 SYNOPSIS
+
+    use IO::Async::XMLStream::SAXReader;
+    use IO::Async::Loop;
+
+    my $loop = IO::Async::Loop->new();
+
+    my $sax  = IO::Async::XMLStream::SAXReader->new(
+        handle => $SOME_IO_HANDLE,
+        on_start_document => sub {
+            my ( $saxreader, @args ) = @_;
+            ...
+        },
+        on_start_element  => sub {
+            my ( $saxreader, @args ) = @_;
+            ...
+        },
+        on_end_document => sub {
+            $loop->stop;
+        },
+    );
+
+    $loop->add($sax);
+    $loop->run();
+
+This sub-classes L<< C<IO::Async::Stream>|IO::Async::Stream >> to provide a streaming SAX parser.
+
+For the individual C<SAX> events that can be listened for, see L<< C<XML::SAX::Base>|XML::SAX::Base >>.
+
+All are prefixed with the C<on_> prefix as constructor arguments.
+
+=cut
 
 use XML::LibXML::SAX::ChunkParser;
 
@@ -117,8 +152,8 @@ sub on_read {
   $self->_SAXReader->{Parser}->parse_chunk($text) if length $text;
   if ($eof) {
     $self->_finish;
+    return 0;
   }
-  return 0 if $eof;
   return 1;
 }
 
