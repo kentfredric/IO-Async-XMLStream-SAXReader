@@ -22,8 +22,8 @@ my $seen_end;
   package Test;
 
   sub new {
-      my ( $self, @rest ) = @_;
-      return bless {@rest}, $self;
+    my ( $self, @rest ) = @_;
+    return bless {@rest}, $self;
   }
 
   sub start_document {
@@ -33,7 +33,6 @@ my $seen_end;
 
   sub end_document {
     $seen_end = 1;
-    $_[0]->{loop}->stop;
   }
 
   sub start_element {
@@ -42,6 +41,7 @@ my $seen_end;
     my $node = join q[/], @aelem_stack_name;
     $path_count{$node}++;
   }
+
   sub end_element {
     my ( $self, $args ) = @_;
     pop @aelem_stack_name;
@@ -52,12 +52,14 @@ my $seen_end;
 my $loop = IO::Async::Loop->new();
 
 my $stream = IO::Async::XMLStream::SAXReader->new(
-  handle            => $fh,
-  sax_handler       => Test->new( loop => $loop ),
+  handle      => $fh,
+  sax_handler => Test->new(),
+  on_read_eof => sub {
+    $loop->stop;
+  }
 );
 
 $loop->add($stream);
-note "Running";
 $loop->run;
 ok( $seen_start, 'Document start was seen' );
 ok( $seen_end,   'Document end was seen' );
