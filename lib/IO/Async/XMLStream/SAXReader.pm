@@ -198,7 +198,7 @@ version 0.001000
     $loop->add($sax);
     $loop->run();
 
-This subclasses L<< C<IO::Async::Stream>|IO::Async::Stream >> to provide a streaming SAX parser.
+This sub-classes L<< C<IO::Async::Stream>|IO::Async::Stream >> to provide a streaming SAX parser.
 
 For the individual C<SAX> events that can be listened for, see L<< C<XML::SAX::Base>|XML::SAX::Base >>.
 

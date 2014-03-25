@@ -29,7 +29,7 @@ SYNOPSIS
         $loop->add($sax);
         $loop->run();
 
-    This subclasses "IO::Async::Stream" to provide a streaming SAX parser.
+    This sub-classes "IO::Async::Stream" to provide a streaming SAX parser.
 
     For the individual "SAX" events that can be listened for, see
     "XML::SAX::Base".
