@@ -32,6 +32,8 @@ perlcritic.rc
 t/00-compile/lib_IO_Async_XMLStream_SAXReader_pm.t
 t/00-report-prereqs.t
 t/01-piecewise-xml.t
+t/02-piecewise-subclass-xml.t
+t/03-piecewise-saxclass-xml.t
 t/data-xml/KENTNL.xml
 weaver.ini
 xt/author/critic.t

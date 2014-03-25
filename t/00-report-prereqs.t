@@ -112,7 +112,8 @@ my $static_prereqs = do { my $x = {
        'runtime' => {
                       'requires' => {
                                       'IO::Async::Stream' => '0',
-                                      'XML::LibXML::SAX::ChunkParser' => '0',
+                                      'Scalar::Util' => '0',
+                                      'XML::LibXML::SAX::ChunkParser' => '0.00007',
                                       'parent' => '0',
                                       'perl' => '5.008',
                                       'strict' => '0',

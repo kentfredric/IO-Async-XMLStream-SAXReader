@@ -44,16 +44,7 @@ use parent 'IO::Async::Stream';
 
 
 
-use XML::LibXML::SAX::ChunkParser;
-
-our $BUGGY_FINISH = !eval { XML::LibXML::SAX::ChunkParser->VERSION('0.0007'); 1 };
-
-sub _init {
-  my ($self) = @_;
-  $self->SUPER::_init;
-  $self->_SAXReader;
-  return $self;
-}
+use XML::LibXML::SAX::ChunkParser 0.00007;    # Buggy Finish
 
 ## no critic (NamingConventions)
 sub _SAXReader {
@@ -61,7 +52,7 @@ sub _SAXReader {
   my $key = 'SAXReader';
   return $self->{$key} if exists $self->{$key};
   $self->{$key} = {};
-  $self->{$key}->{Parser} = XML::LibXML::SAX::ChunkParser->new();
+  $self->{$key}->{Parser} = XML::LibXML::SAX::ChunkParser->new( Handler => $self->{sax_handler} );
   return $self->{$key};
 }
 ## use critic
@@ -102,47 +93,27 @@ my @XML_METHODS = qw(
   xml_decl
 );
 
-sub _set_handler {
-  my ( $self, $method, $callback ) = @_;
-  if ( not defined $callback ) {
-    return $self->_clear_handler($method);
-  }
-  $self->{ 'on_' . $method } = $callback;
-  $self->_SAXReader->{Parser}->{Methods}->{$method} = sub {
-    my (@args) = @_;
-    $self->invoke_event( 'on_' . $method, @args );
-  };
-  return $self;
-}
-
-sub _clear_handler {
-  my ( $self, $method ) = @_;
-  delete $self->_SAXReader->{Parser}->{Methods}->{$method};
-  delete $self->{ 'on_' . $method };
-  return $self;
-}
-
 sub configure {
   my ( $self, %params ) = @_;
-  for my $method (@XML_METHODS) {
-    next unless exists $params{ 'on_' . $method };
-    my $cb = delete $params{ 'on_' . $method };
-    $self->_set_handler( $method, $cb );
-  }
-  return $self->SUPER::configure(%params);
-}
 
-sub _finish {
-  my ($self) = @_;
-  if ( !$BUGGY_FINISH ) {
-    return $self->_SAXReader->{Parser}->finish;
+  for my $method ('sax_handler') {
+    next unless exists $params{$method};
+    $self->{$method} = delete $params{$method};
   }
-  my $p  = $self->_SAXReader->{Parser};
-  my $lp = $p->{ParserOptions}->{LibParser};
-  $lp->set_handler($p);
-  $p->finish;
-  $lp->set_handler(undef);
-  return $self;
+
+  if ( not $self->{'sax_handler'} ) {
+    $self->{'sax_handler'} = IO::Async::XMLStream::SAXReader::DuckHandler->new(
+      {
+        SAXReader => $self,
+      }
+    );
+    for my $method (@XML_METHODS) {
+      next unless exists $params{ 'on_' . $method };
+      $self->{ 'on_' . $method } = delete $params{ 'on_' . $method };
+    }
+  }
+  $self->_SAXReader;
+  return $self->SUPER::configure(%params);
 }
 
 sub on_read {
@@ -151,10 +122,49 @@ sub on_read {
 
   $self->_SAXReader->{Parser}->parse_chunk($text) if length $text;
   if ($eof) {
-    $self->_finish;
+    $self->_SAXReader->{Parser}->finish;
     return 0;
   }
   return 1;
+}
+
+package    ##  Hide
+  IO::Async::XMLStream::SAXReader::DuckHandler;
+
+use Scalar::Util qw(weaken);
+
+sub new {
+  my ( $self, $opts ) = @_;
+  die unless exists $opts->{SAXReader};
+  weaken $opts->{SAXReader};
+  return bless $opts, $self;
+}
+
+sub _dyn_method {
+  my ( $self, $method ) = @_;
+  my $sax      = $self->{SAXReader};
+  my $event    = 'on_' . $method;
+  my $callback = $sax->can_event($event);
+  return unless $callback;
+  return sub {
+    my ( $self, @args ) = @_;
+    return $callback->( $sax, @args );
+  };
+}
+
+sub can {
+  my ( $self, $method ) = @_;
+  my $orig = $self->SUPER::can($method);
+  return $orig if $orig;
+  return $self->_dyn_method($method);
+}
+
+sub AUTOLOAD {
+  my ( $self, @args ) = @_;
+  ( my $methname = our $AUTOLOAD ) =~ s/.+:://;
+  return if $methname eq 'DESTROY';
+  return unless my $meth = $self->_dyn_method($methname);
+  return $meth->( $self, @args );
 }
 
 1;
