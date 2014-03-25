@@ -42,6 +42,25 @@ For the individual C<SAX> events that can be listened for, see L<< C<XML::SAX::B
 
 All are prefixed with the C<on_> prefix as constructor arguments.
 
+Alternatively, if you already have an L<< C<XML::SAX>|XML::SAX >> handler class you wish to reuse:
+
+    use IO::Async::XMLStream::SAXReader;
+    use IO::Async::Loop;
+
+    my $loop = IO::Async::Loop->new();
+
+    my $sax  = IO::Async::XMLStream::SAXReader->new(
+        handle => $SOME_IO_HANDLE,
+        sax_handler => YourClass->new();
+        on_read_eof => sub {
+            $loop->stop;
+        },
+    );
+
+    $loop->add($sax);
+    $loop->run();
+
+
 =cut
 
 use XML::LibXML::SAX::ChunkParser 0.00007;    # Buggy Finish

@@ -37,6 +37,24 @@ For the individual `SAX` events that can be listened for, see [`XML::SAX::Base`]
 
 All are prefixed with the `on_` prefix as constructor arguments.
 
+Alternatively, if you already have an [`XML::SAX`](https://metacpan.org/pod/XML::SAX) handler class you wish to reuse:
+
+    use IO::Async::XMLStream::SAXReader;
+    use IO::Async::Loop;
+
+    my $loop = IO::Async::Loop->new();
+
+    my $sax  = IO::Async::XMLStream::SAXReader->new(
+        handle => $SOME_IO_HANDLE,
+        sax_handler => YourClass->new();
+        on_read_eof => sub {
+            $loop->stop;
+        },
+    );
+
+    $loop->add($sax);
+    $loop->run();
+
 # AUTHOR
 
 Kent Fredric <kentfredric@gmail.com>
