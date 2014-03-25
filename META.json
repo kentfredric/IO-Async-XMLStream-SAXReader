@@ -82,6 +82,7 @@
       },
       "runtime" : {
          "requires" : {
+            "Carp" : "0",
             "IO::Async::Stream" : "0",
             "Scalar::Util" : "0",
             "XML::LibXML::SAX::ChunkParser" : "0.00007",
@@ -134,6 +135,7 @@
       "modules" : {
          "CPAN::Meta" : "2.140640",
          "CPAN::Meta::Requirements" : "2.125",
+         "Carp" : "1.33",
          "Dist::Zilla::Plugin::Authority" : "1.006",
          "Dist::Zilla::Plugin::AutoPrereqs" : "5.014",
          "Dist::Zilla::Plugin::ConfirmRelease" : "5.014",

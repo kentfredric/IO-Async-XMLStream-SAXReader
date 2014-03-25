@@ -122,11 +122,7 @@ sub configure {
   }
 
   if ( not $self->{'sax_handler'} ) {
-    $self->{'sax_handler'} = IO::Async::XMLStream::SAXReader::DuckHandler->new(
-      {
-        SAXReader => $self,
-      }
-    );
+    $self->{'sax_handler'} = IO::Async::XMLStream::SAXReader::DuckHandler->new( { SAXReader => $self, }, );
     for my $method (@XML_METHODS) {
       next unless exists $params{ 'on_' . $method };
       $self->{ 'on_' . $method } = delete $params{ 'on_' . $method };

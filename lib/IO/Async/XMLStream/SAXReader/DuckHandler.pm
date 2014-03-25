@@ -10,10 +10,11 @@ $IO::Async::XMLStream::SAXReader::DuckHandler::VERSION = '0.001000';
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Scalar::Util qw(weaken);
+use Carp qw(croak);
 
 sub new {
   my ( $self, $opts ) = @_;
-  die unless exists $opts->{SAXReader};
+  croak('SAXReader option is mandatory') unless exists $opts->{SAXReader};
   weaken $opts->{SAXReader};
   return bless $opts, $self;
 }
@@ -25,7 +26,7 @@ sub _dyn_method {
   my $callback = $sax->can_event($event);
   return unless $callback;
   return sub {
-    my ( $self, @args ) = @_;
+    my ( undef, @args ) = @_;
     return $callback->( $sax, @args );
   };
 }
@@ -37,10 +38,11 @@ sub can {
   return $self->_dyn_method($method);
 }
 
+## no critic (ClassHierarchies::ProhibitAutoloading)
 sub AUTOLOAD {
   my ( $self, @args ) = @_;
-  ( my $methname = our $AUTOLOAD ) =~ s/.+:://;
-  return if $methname eq 'DESTROY';
+  ( my $methname = our $AUTOLOAD ) =~ s/.+:://msx;
+  return if 'DESTROY' eq $methname;
   return unless my $meth = $self->_dyn_method($methname);
   return $meth->( $self, @args );
 }

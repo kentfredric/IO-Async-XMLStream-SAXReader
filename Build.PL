@@ -24,6 +24,7 @@ my %module_build_args = (
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
+    "Carp" => 0,
     "IO::Async::Stream" => 0,
     "Scalar::Util" => 0,
     "XML::LibXML::SAX::ChunkParser" => "0.00007",
