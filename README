@@ -5,6 +5,37 @@ NAME
 VERSION
     version 0.001000
 
+SYNOPSIS
+        use IO::Async::XMLStream::SAXReader;
+        use IO::Async::Loop;
+
+        my $loop = IO::Async::Loop->new();
+
+        my $sax  = IO::Async::XMLStream::SAXReader->new(
+            handle => $SOME_IO_HANDLE,
+            on_start_document => sub {
+                my ( $saxreader, @args ) = @_;
+                ...
+            },
+            on_start_element  => sub {
+                my ( $saxreader, @args ) = @_;
+                ...
+            },
+            on_end_document => sub {
+                $loop->stop;
+            },
+        );
+
+        $loop->add($sax);
+        $loop->run();
+
+    This subclasses "IO::Async::Stream" to provide a streaming SAX parser.
+
+    For the individual "SAX" events that can be listened for, see
+    "XML::SAX::Base".
+
+    All are prefixed with the "on_" prefix as constructor arguments.
+
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 

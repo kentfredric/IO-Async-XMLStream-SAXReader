@@ -9,6 +9,39 @@ $IO::Async::XMLStream::SAXReader::VERSION = '0.001000';
 
 use parent 'IO::Async::Stream';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 use XML::LibXML::SAX::ChunkParser;
 
 our $BUGGY_FINISH = !eval { XML::LibXML::SAX::ChunkParser->VERSION('0.0007'); 1 };
@@ -117,8 +150,8 @@ sub on_read {
   $self->_SAXReader->{Parser}->parse_chunk($text) if length $text;
   if ($eof) {
     $self->_finish;
+    return 0;
   }
-  return 0 if $eof;
   return 1;
 }
 
@@ -137,6 +170,37 @@ IO::Async::XMLStream::SAXReader - Dispatch SAX events from an XML stream.
 =head1 VERSION
 
 version 0.001000
+
+=head1 SYNOPSIS
+
+    use IO::Async::XMLStream::SAXReader;
+    use IO::Async::Loop;
+
+    my $loop = IO::Async::Loop->new();
+
+    my $sax  = IO::Async::XMLStream::SAXReader->new(
+        handle => $SOME_IO_HANDLE,
+        on_start_document => sub {
+            my ( $saxreader, @args ) = @_;
+            ...
+        },
+        on_start_element  => sub {
+            my ( $saxreader, @args ) = @_;
+            ...
+        },
+        on_end_document => sub {
+            $loop->stop;
+        },
+    );
+
+    $loop->add($sax);
+    $loop->run();
+
+This subclasses L<< C<IO::Async::Stream>|IO::Async::Stream >> to provide a streaming SAX parser.
+
+For the individual C<SAX> events that can be listened for, see L<< C<XML::SAX::Base>|XML::SAX::Base >>.
+
+All are prefixed with the C<on_> prefix as constructor arguments.
 
 =head1 AUTHOR
 
