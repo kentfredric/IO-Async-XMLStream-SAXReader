@@ -64,6 +64,7 @@ use parent 'IO::Async::Stream';
 
 
 use XML::LibXML::SAX::ChunkParser 0.00007;    # Buggy Finish
+use IO::Async::XMLStream::SAXReader::DuckHandler;
 
 ## no critic (NamingConventions)
 sub _SAXReader {
@@ -121,7 +122,7 @@ sub configure {
   }
 
   if ( not $self->{'sax_handler'} ) {
-    $self->{'sax_handler'} = IO::Async::XMLStream::SAXReader::DuckHandler->new(
+    $self->{'sax_handler'} =->new(
       {
         SAXReader => $self,
       }
@@ -145,45 +146,6 @@ sub on_read {
     return 0;
   }
   return 1;
-}
-
-package    ##  Hide
-  IO::Async::XMLStream::SAXReader::DuckHandler;
-
-use Scalar::Util qw(weaken);
-
-sub new {
-  my ( $self, $opts ) = @_;
-  die unless exists $opts->{SAXReader};
-  weaken $opts->{SAXReader};
-  return bless $opts, $self;
-}
-
-sub _dyn_method {
-  my ( $self, $method ) = @_;
-  my $sax      = $self->{SAXReader};
-  my $event    = 'on_' . $method;
-  my $callback = $sax->can_event($event);
-  return unless $callback;
-  return sub {
-    my ( $self, @args ) = @_;
-    return $callback->( $sax, @args );
-  };
-}
-
-sub can {
-  my ( $self, $method ) = @_;
-  my $orig = $self->SUPER::can($method);
-  return $orig if $orig;
-  return $self->_dyn_method($method);
-}
-
-sub AUTOLOAD {
-  my ( $self, @args ) = @_;
-  ( my $methname = our $AUTOLOAD ) =~ s/.+:://;
-  return if $methname eq 'DESTROY';
-  return unless my $meth = $self->_dyn_method($methname);
-  return $meth->( $self, @args );
 }
 
 1;

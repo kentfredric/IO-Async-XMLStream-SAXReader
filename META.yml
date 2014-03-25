@@ -23,6 +23,9 @@ provides:
   IO::Async::XMLStream::SAXReader:
     file: lib/IO/Async/XMLStream/SAXReader.pm
     version: '0.001000'
+  IO::Async::XMLStream::SAXReader::DuckHandler:
+    file: lib/IO/Async/XMLStream/SAXReader/DuckHandler.pm
+    version: '0.001000'
 requires:
   IO::Async::Stream: '0'
   Scalar::Util: '0'
@@ -228,6 +231,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Test::Compile::PerFile:
           file:
             - lib/IO/Async/XMLStream/SAXReader.pm
+            - lib/IO/Async/XMLStream/SAXReader/DuckHandler.pm
           path_translator: base64_filter
           prefix: t/00-compile
           skip: []
