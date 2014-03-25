@@ -127,6 +127,10 @@ sub configure {
     my $cb = delete $params{ 'on_' . $method };
     $self->_set_handler( $method, $cb );
   }
+  for my $method (@XML_METHODS) {
+    next unless my $callback = $self->can( 'on_' . $method );
+    $self->_set_handler( $method, $callback );
+  }
   return $self->SUPER::configure(%params);
 }
 
