@@ -7,6 +7,8 @@ package IO::Async::XMLStream::SAXReader;
 $IO::Async::XMLStream::SAXReader::VERSION = '0.001000';
 # ABSTRACT: Dispatch SAX events from an XML stream.
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 use parent 'IO::Async::Stream';
 
 
