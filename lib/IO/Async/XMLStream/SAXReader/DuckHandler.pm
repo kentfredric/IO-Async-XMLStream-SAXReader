@@ -4,7 +4,7 @@ use warnings;
 
 package IO::Async::XMLStream::SAXReader::DuckHandler;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.001002';
 
 # ABSTRACT: Deferred Handler proxy for IO::Async constructor-driven interface
 
