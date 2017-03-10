@@ -1,7 +1,7 @@
 {
    "abstract" : "Dispatch SAX events from an XML stream.",
    "author" : [
-      "Kent Fredric <kentfredric@gmail.com>"
+      "Kent Fredric <kentnl@cpan.org>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Zilla version 6.009, CPAN::Meta::Converter version 2.150010",
@@ -891,9 +891,6 @@
       }
    },
    "x_authority" : "cpan:KENTNL",
-   "x_contributors" : [
-      "Kent Fredric <kentnl@cpan.org>"
-   ],
    "x_serialization_backend" : "Cpanel::JSON::XS version 3.0227"
 }
 

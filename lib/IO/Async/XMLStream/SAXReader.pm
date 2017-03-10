@@ -211,7 +211,7 @@ Alternatively, if you already have an L<< C<XML::SAX>|XML::SAX >> handler class 
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
