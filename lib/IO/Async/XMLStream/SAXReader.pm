@@ -4,7 +4,7 @@ use warnings;
 
 package IO::Async::XMLStream::SAXReader;
 
-our $VERSION = '0.001002';
+our $VERSION = '0.001003';
 
 # ABSTRACT: Dispatch SAX events from an XML stream.
 
