@@ -38,7 +38,7 @@ misc/Changes.deps.all
 misc/Changes.deps.dev
 misc/Changes.deps.opt
 misc/built_with.json
-perlcritic.deps
+misc/perlcritic.deps
 perlcritic.rc
 t/00-compile/lib_IO_Async_XMLStream_SAXReader_DuckHandler_pm.t
 t/00-compile/lib_IO_Async_XMLStream_SAXReader_pm.t

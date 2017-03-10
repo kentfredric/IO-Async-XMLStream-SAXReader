@@ -1,6 +1,6 @@
 Release history for IO-Async-XMLStream-SAXReader
 
-0.001001 2017-03-10T21:07:08Z d4f06b4
+0.001001 2017-03-10T21:07:15Z f46d024
  - Bugfix: Updated tooling fixes -Ddefault_inc_excludes_dot test failures
 
  [Dependencies::Stats]
