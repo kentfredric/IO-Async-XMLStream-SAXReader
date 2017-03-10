@@ -5,6 +5,8 @@ use utf8;
 
 package IO::Async::XMLStream::SAXReader;
 
+our $VERSION = '0.001001';
+
 # ABSTRACT: Dispatch SAX events from an XML stream.
 
 # AUTHORITY

@@ -5,6 +5,8 @@ use utf8;
 
 package IO::Async::XMLStream::SAXReader::DuckHandler;
 
+our $VERSION = '0.001001';
+
 # ABSTRACT: Deferred Handler proxy for IO::Async constructor-driven interface
 
 # AUTHORITY
