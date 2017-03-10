@@ -13,6 +13,7 @@ do { my $x = {
                                         'Test::More' => '1.302073'
                                       },
                       'requires' => {
+                                      'Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes' => '0.001001',
                                       'Dist::Zilla::Plugin::Authority' => '1.006',
                                       'Dist::Zilla::Plugin::AutoPrereqs' => '0',
                                       'Dist::Zilla::Plugin::ConfirmRelease' => '0',
