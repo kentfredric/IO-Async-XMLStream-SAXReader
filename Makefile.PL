@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
     "IO::Async::Loop" => 0,
-    "Test::More" => "0.89"
+    "Test::More" => 0
   },
   "VERSION" => "0.001001",
   "test" => {
@@ -46,7 +46,7 @@ my %FallbackPrereqs = (
   "IO::Async::Loop" => 0,
   "IO::Async::Stream" => 0,
   "Scalar::Util" => 0,
-  "Test::More" => "0.89",
+  "Test::More" => 0,
   "XML::LibXML::SAX::ChunkParser" => "0.00007",
   "parent" => 0,
   "strict" => 0,

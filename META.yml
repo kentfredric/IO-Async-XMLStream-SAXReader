@@ -6,7 +6,7 @@ build_requires:
   ExtUtils::MakeMaker: '0'
   File::Spec: '0'
   IO::Async::Loop: '0'
-  Test::More: '0.89'
+  Test::More: '0'
   perl: '5.021008'
 configure_requires:
   ExtUtils::MakeMaker: '0'
