@@ -1,5 +1,7 @@
 Release history for IO-Async-XMLStream-SAXReader
 
+0.001003 2017-03-10T22:59:50Z 2ab930d
+
 0.001002 2017-03-10T22:58:32Z 3b7e8e8
  - Bugfix: Revert overly aggressive Perl upgrade caused by a backfiring MinimumPerl test false-positiving in an .xml
    file
