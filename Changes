@@ -1,6 +1,6 @@
 Release history for IO-Async-XMLStream-SAXReader
 
-0.001001 2017-03-10T20:57:59Z
+0.001001 2017-03-10T21:05:18Z
  [Dependencies::Stats]
  - Dependencies changed since 0.001000, see misc/*.deps* for details
  - configure: +1 ↓1 (recommends: ↑1)
