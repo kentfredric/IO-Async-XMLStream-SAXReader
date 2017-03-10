@@ -36,6 +36,7 @@
             "Dist::Zilla::Plugin::BumpVersionAfterRelease" : "0",
             "Dist::Zilla::Plugin::ConfirmRelease" : "0",
             "Dist::Zilla::Plugin::CopyFilesFromBuild" : "0",
+            "Dist::Zilla::Plugin::FileFinder::Filter" : "0",
             "Dist::Zilla::Plugin::Git::Check" : "0",
             "Dist::Zilla::Plugin::Git::Commit" : "0",
             "Dist::Zilla::Plugin::Git::CommitBuild" : "0",
@@ -101,7 +102,7 @@
             "Scalar::Util" : "0",
             "XML::LibXML::SAX::ChunkParser" : "0.00007",
             "parent" : "0",
-            "perl" : "5.021008",
+            "perl" : "5.006",
             "strict" : "0",
             "warnings" : "0"
          }
@@ -117,7 +118,7 @@
             "File::Spec" : "0",
             "IO::Async::Loop" : "0",
             "Test::More" : "0",
-            "perl" : "5.021008"
+            "perl" : "5.006"
          }
       }
    },
@@ -152,6 +153,11 @@
          "version" : "5.025010"
       },
       "plugins" : [
+         {
+            "class" : "Dist::Zilla::Plugin::FileFinder::Filter",
+            "name" : "MinPerlTestFiles",
+            "version" : "6.009"
+         },
          {
             "class" : "Dist::Zilla::Plugin::MetaConfig",
             "name" : "@Author::KENTNL/MetaConfig",

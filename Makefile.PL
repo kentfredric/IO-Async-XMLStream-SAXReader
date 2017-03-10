@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use 5.021008;
+use 5.006;
 
 use ExtUtils::MakeMaker;
 
@@ -14,7 +14,7 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "IO-Async-XMLStream-SAXReader",
   "LICENSE" => "perl",
-  "MIN_PERL_VERSION" => "5.021008",
+  "MIN_PERL_VERSION" => "5.006",
   "NAME" => "IO::Async::XMLStream::SAXReader",
   "PREREQ_PM" => {
     "Carp" => 0,
