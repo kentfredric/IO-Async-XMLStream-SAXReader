@@ -21,10 +21,10 @@ name: IO-Async-XMLStream-SAXReader
 provides:
   IO::Async::XMLStream::SAXReader:
     file: lib/IO/Async/XMLStream/SAXReader.pm
-    version: '0.001001'
+    version: '0.001002'
   IO::Async::XMLStream::SAXReader::DuckHandler:
     file: lib/IO/Async/XMLStream/SAXReader/DuckHandler.pm
-    version: '0.001001'
+    version: '0.001002'
 requires:
   Carp: '0'
   IO::Async::Stream: '0'
@@ -38,4 +38,4 @@ resources:
   bugtracker: https://github.com/kentnl/IO-Async-XMLStream-SAXReader/issues
   homepage: https://github.com/kentnl/IO-Async-XMLStream-SAXReader
   repository: https://github.com/kentnl/IO-Async-XMLStream-SAXReader.git
-version: '0.001001'
+version: '0.001002'
