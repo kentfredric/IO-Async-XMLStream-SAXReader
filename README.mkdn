@@ -4,7 +4,7 @@ IO::Async::XMLStream::SAXReader - Dispatch SAX events from an XML stream.
 
 # VERSION
 
-version 0.001001
+version 0.001002
 
 # SYNOPSIS
 
