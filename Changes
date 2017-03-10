@@ -4,9 +4,9 @@ Release history for IO-Async-XMLStream-SAXReader
  [Dependencies::Stats]
  - Dependencies changed since 0.001000, see misc/*.deps* for details
  - configure: +1 ↓1 (recommends: ↑1)
- - develop: +11 ↑3 -3 (recommends: +1, suggests: +2 -1)
+ - develop: +13 ↑3 -3 (recommends: +1, suggests: +2 -1)
  - runtime: ↑1
- - test: +2 -3 (recommends: ↑3 -1)
+ - test: +2 -3 (recommends: ↑2 ↓1 -1)
 
 0.001000 2014-03-25T15:17:46Z
  - First version.

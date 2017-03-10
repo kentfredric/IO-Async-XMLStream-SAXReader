@@ -5,13 +5,15 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - perl 5.008
 
  [Added / develop recommends]
- - Test::More 1.302073
+ - Test::More 0.99
 
  [Added / develop requires]
  - Dist::Zilla 5
  - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001
+ - Dist::Zilla::Plugin::Author::KENTNL::TravisCI
  - Dist::Zilla::Plugin::Git::Contributors 0.006
  - Dist::Zilla::Plugin::Prereqs::AuthorDeps
+ - Dist::Zilla::Plugin::Prereqs::Upgrade
  - Dist::Zilla::Plugin::Readme::Brief
  - Dist::Zilla::Plugin::Test::EOL
  - English
@@ -29,7 +31,7 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - perl 5.021008
 
  [Changed / configure recommends]
- - ExtUtils::MakeMaker 6.92 → 7.24
+ - ExtUtils::MakeMaker 6.92 → 7.00
 
  [Changed / configure requires]
  - ExtUtils::MakeMaker 6.30 → 0
@@ -44,8 +46,8 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
 
  [Changed / test recommends]
  - CPAN::Meta 0 → 2.120900
- - ExtUtils::MakeMaker 6.92 → 7.24
- - Test::More 1.001003 → 1.302073
+ - ExtUtils::MakeMaker 6.92 → 7.00
+ - Test::More 1.001003 → 0.99
 
  [Removed / develop requires]
  - Dist::Zilla::Plugin::EOLTests
