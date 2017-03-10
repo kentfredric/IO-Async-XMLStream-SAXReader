@@ -1,3 +1,44 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
 0.001001
+ [Added / configure requires]
+ - perl 5.008
+
+ [Added / develop recommends]
+ - Test::More 1.302073
+
+ [Added / develop requires]
+ - English
+ - Test::EOL
+ - Test::MinimumVersion
+ - Test::More 0.96
+
+ [Added / test requires]
+ - File::Spec
+ - perl 5.021008
+
+ [Changed / configure recommends]
+ - ExtUtils::MakeMaker 6.92 → 7.24
+
+ [Changed / configure requires]
+ - ExtUtils::MakeMaker 6.30 → 0
+
+ [Changed / develop requires]
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.012001 → 2.025021
+ - Test::Kwalitee 1.12 → 1.21
+
+ [Changed / runtime requires]
+ - perl 5.008 → 5.021008
+
+ [Changed / test recommends]
+ - CPAN::Meta 0 → 2.120900
+ - ExtUtils::MakeMaker 6.92 → 7.24
+ - Test::More 1.001003 → 1.302073
+
+ [Removed / test recommends]
+ - CPAN::Meta::Requirements 2.120900
+
+ [Removed / test requires]
+ - File::Spec::Functions
+ - List::Util
+ - version
