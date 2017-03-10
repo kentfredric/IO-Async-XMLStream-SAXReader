@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More tests => 3;
 
 # FILENAME: 01-piecewise-xml.t
 # ABSTRACT: Basic Test for decoding XML
@@ -67,6 +67,3 @@ is_deeply(
   },
   "Elements seen match expected count"
 );
-
-done_testing;
-

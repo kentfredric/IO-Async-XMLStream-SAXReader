@@ -1,67 +1,28 @@
-NAME
-    IO::Async::XMLStream::SAXReader - Dispatch SAX events from an XML
-    stream.
+IO::Async::XMLStream::SAXReader
 
-VERSION
-    version 0.001000
 
-SYNOPSIS
-        use IO::Async::XMLStream::SAXReader;
-        use IO::Async::Loop;
 
-        my $loop = IO::Async::Loop->new();
+INSTALLATION
 
-        my $sax  = IO::Async::XMLStream::SAXReader->new(
-            handle => $SOME_IO_HANDLE,
-            on_start_document => sub {
-                my ( $saxreader, @args ) = @_;
-                ...
-            },
-            on_start_element  => sub {
-                my ( $saxreader, @args ) = @_;
-                ...
-            },
-            on_end_document => sub {
-                $loop->stop;
-            },
-        );
+This is a Perl module distribution. It should be installed with whichever
+tool you use to manage your installation of Perl, e.g. any of
 
-        $loop->add($sax);
-        $loop->run();
+  cpanm .
+  cpan  .
+  cpanp -i .
 
-    This sub-classes "IO::Async::Stream" to provide a streaming SAX parser.
+Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Should you wish to install this module manually, the procedure is
 
-    For the individual "SAX" events that can be listened for, see
-    "XML::SAX::Base".
-
-    All are prefixed with the "on_" prefix as constructor arguments.
-
-    Alternatively, if you already have an "XML::SAX" handler class you wish
-    to reuse:
-
-        use IO::Async::XMLStream::SAXReader;
-        use IO::Async::Loop;
-
-        my $loop = IO::Async::Loop->new();
-
-        my $sax  = IO::Async::XMLStream::SAXReader->new(
-            handle => $SOME_IO_HANDLE,
-            sax_handler => YourClass->new();
-            on_read_eof => sub {
-                $loop->stop;
-            },
-        );
-
-        $loop->add($sax);
-        $loop->run();
-
-AUTHOR
-    Kent Fredric <kentfredric@gmail.com>
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2014 by Kent Fredric
-    <kentfredric@gmail.com>.
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+This software is copyright (c) 2017 by Kent Fredric
+<kentfredric@gmail.com>.
 
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
