@@ -8,6 +8,10 @@ copyright_holder = Kent Fredric <kentfredric@gmail.com>
 ; Uncomment this to bootstrap via self
 ; [Bootstrap::lib]
 
+[FileFinder::Filter / MinPerlTestFiles]
+finder = :TestFiles
+skip = \.xml$
+
 [@Author::KENTNL]
 :version          = 2.025020
 bump_versions     = 1
@@ -16,6 +20,7 @@ mantissa          = 6
 toolkit           = eumm
 toolkit_hardness  = soft
 copyfiles         = LICENSE
+MinimumPerl.test_finder = MinPerlTestFiles
 ; version_major     = 0
 ; version_minor     = 1
 ; the following data denotes when this minor was minted
