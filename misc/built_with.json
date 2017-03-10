@@ -72,7 +72,6 @@
       "XML::LibXML::SAX::ChunkParser" : "0.00008",
       "parent" : "0.236",
       "strict" : "1.11",
-      "utf8" : "1.19",
       "warnings" : "1.37"
    },
    "perl" : {

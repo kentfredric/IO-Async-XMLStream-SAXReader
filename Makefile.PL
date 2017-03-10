@@ -23,7 +23,6 @@ my %WriteMakefileArgs = (
     "XML::LibXML::SAX::ChunkParser" => "0.00007",
     "parent" => 0,
     "strict" => 0,
-    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -50,7 +49,6 @@ my %FallbackPrereqs = (
   "XML::LibXML::SAX::ChunkParser" => "0.00007",
   "parent" => 0,
   "strict" => 0,
-  "utf8" => 0,
   "warnings" => 0
 );
 

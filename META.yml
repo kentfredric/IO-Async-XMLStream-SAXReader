@@ -33,7 +33,6 @@ requires:
   parent: '0'
   perl: '5.021008'
   strict: '0'
-  utf8: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/kentnl/IO-Async-XMLStream-SAXReader/issues
