@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package IO::Async::XMLStream::SAXReader::DuckHandler;
-$IO::Async::XMLStream::SAXReader::DuckHandler::VERSION = '0.001001';
+
+our $VERSION = '0.001001';
+
 # ABSTRACT: Deferred Handler proxy for IO::Async constructor-driven interface
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY

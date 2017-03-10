@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package IO::Async::XMLStream::SAXReader;
-$IO::Async::XMLStream::SAXReader::VERSION = '0.001001';
+
+our $VERSION = '0.001001';
+
 # ABSTRACT: Dispatch SAX events from an XML stream.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
