@@ -1,6 +1,10 @@
 This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and OPTIONAL )
 
-0.001001
+0.001002
+ [Added / develop requires]
+ - Dist::Zilla::Plugin::FileFinder::Filter
+
+0.001001 2017-03-10T21:07:34Z
  [Added / develop recommends]
  - Test::More 0.99
 
