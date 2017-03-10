@@ -1,2 +1,3 @@
-.build
-IO-Async-XMLStream-SAXReader-*
+/.build
+/IO-Async-XMLStream-SAXReader-*
+/tmp/
